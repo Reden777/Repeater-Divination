@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intention Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #intentionInput {
+            width: 80ch;
+            height: 5em;
+        }
+        #canvas {
+            border: 1px solid #000;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Intention Color</h1>
+    <label for="intentionInput">Intention: </label>
+    <textarea id="intentionInput" maxlength="300"></textarea>
+    <button onclick="generateImage()">Generate</button>
+    <br>
+    <canvas id="canvas" width="800" height="600"></canvas>
+
+    <script>
+        function hashString(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+            }
+            return hash;
+        }
+
+        function hashToRGBA(str) {
+            const hash = hashString(str);
+            const r = (hash >> 24) & 0xFF;
+            const g = (hash >> 16) & 0xFF;
+            const b = (hash >> 8) & 0xFF;
+            const a = hash & 0xFF;
+            return { r, g, b, a };
+        }
+
+        function rgbaToHex(r, g, b, a) {
+            return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase() +
+                   a.toString(16).padStart(2, '0').toUpperCase();
+        }
+
+        function generateImage() {
+            const intention = document.getElementById('intentionInput').value;
+            if (!intention) return;
+
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+            const { r, g, b, a } = hashToRGBA(intention);
+            const rgbaColor = `rgba(${r},${g},${b},${a / 255})`;
+            const hexColor = rgbaToHex(r, g, b, a);
+
+            // Fill background with hashed color
+            ctx.fillStyle = rgbaColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Determine font color based on brightness and alpha
+            const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+            const fontColor = (brightness > 127.5 || a < 127.5) ? 'black' : 'white';
+
+            // Set text properties
+            ctx.fillStyle = fontColor;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            const fontSize = 24; //Math.min(60, 600 / intention.length);
+            ctx.font = `${fontSize}px "Times New Roman"`;
+
+            // Split intention text into sentences and draw each sentence on a new line
+            const sentences = intention.split('.').map(sentence => sentence.trim()).filter(sentence => sentence.length > 0);
+            const lineHeight = fontSize * 1.2;
+            const textYStart = canvas.height / 2 - (sentences.length - 1) * lineHeight / 2;
+
+            sentences.forEach((sentence, index) => {
+                ctx.fillText(sentence + ".", canvas.width / 2, textYStart + index * lineHeight);
+            });
+
+            // Draw hex code
+            ctx.font = '20px "Times New Roman"';
+            ctx.fillText(`(#${hexColor})`, canvas.width / 2, textYStart + sentences.length * lineHeight);
+        }
+    </script>
+</body>
+</html>
