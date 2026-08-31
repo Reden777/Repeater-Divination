@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-4rand_swizzler.py
-A temporally staggered, byte-level entropy swizzler.
-Pulls atmospheric entropy sequentially with dynamic timing delays
-and applies bitwise swizzling per byte.
+swizzler_oracle.py
+Temporally staggered entropy oracle.
+Default: Outputs a clean, punctuated sentence.
+Opt-in: Pass --show-bytes to inspect raw/swizzled byte values and timing metrics.
 """
 
 import sys
@@ -15,7 +15,7 @@ import hashlib
 from typing import List, Tuple
 from rich.console import Console
 from rich.table import Table
-from rich.live import Live
+from rich.panel import Panel
 
 console = Console()
 
@@ -185,107 +185,87 @@ def fetch_single_atmospheric_byte() -> int:
         return int(data)
 
 def swizzle_byte(raw_byte: int, step: int, timing_ns: int, prev_byte: int) -> int:
-    """
-    Byte-Level Swizzler:
-    1. Injects hardware clock jitter (lowest 8 bits of execution nanoseconds).
-    2. Chains state with the previous byte.
-    3. Performs a circular bit-rotation (ROL) based on the step index.
-    """
+    """Swizzles byte using jitter, state chaining, and circular bit-rotation."""
     jitter = timing_ns & 0xFF
     swizzled = raw_byte ^ jitter ^ prev_byte
-    
-    # 8-bit circular left rotate (ROL) by (step % 8)
     shift = (step % 7) + 1
     swizzled = ((swizzled << shift) & 0xFF) | (swizzled >> (8 - shift))
-    
     return swizzled & 0xFF
 
-def run_swizzler_pipeline(n: int, min_delay: float, max_delay: float) -> List[Tuple[int, int, float, str]]:
-    """
-    Runs the staggered sampling pipeline.
-    Yields (raw_byte, swizzled_byte, delay_used, word).
-    """
-    results = []
-    used_indices = set()
-    prev_byte = 0xAA  # Seed state
-    
-    for i in range(1, n + 1):
-        # 1. Stagger / Play with the timing
-        stagger_delay = random.uniform(min_delay, max_delay)
-        time.sleep(stagger_delay)
-        
-        # 2. Sample hardware execution timestamp
-        t_start = time.perf_counter_ns()
-        
-        # 3. Pull atmospheric byte
-        raw_byte = fetch_single_atmospheric_byte()
-        t_delta = time.perf_counter_ns() - t_start
-        
-        # 4. Swizzle byte
-        final_byte = swizzle_byte(raw_byte, i, t_delta, prev_byte)
-        
-        # Deduplication fallback: if collision, bit-flip / rotate until unique
-        while final_byte in used_indices:
-            final_byte = (final_byte + 1) % 256
-            
-        used_indices.add(final_byte)
-        prev_byte = final_byte
-        
-        results.append((raw_byte, final_byte, stagger_delay, WORDS[final_byte]))
-        
-    return results
+def format_sentence(words: List[str]) -> str:
+    """Formats a list of words into a single clean sentence."""
+    joined = " ".join(words).strip()
+    return f"{joined}."
 
 def main():
-    parser = argparse.ArgumentParser(description="Staggered Byte-Level Entropy Swizzler")
-    parser.add_argument('-q', '--query', required=True, help='The focal question.')
-    parser.add_argument('-n', '--num', type=int, default=3, help='Number of words (1-20).')
+    parser = argparse.ArgumentParser(description="Temporal Entropy Oracle")
+    parser.add_argument('-q', '--query', required=True, help='The focus or question.')
+    parser.add_argument('-n', '--num', type=int, default=3, help='Number of words in the sentence (default: 3).')
     parser.add_argument('--min-delay', type=float, default=0.2, help='Min timing stagger in seconds.')
-    parser.add_argument('--max-delay', type=float, default=0.8, help='Max timing stagger in seconds.')
+    parser.add_argument('--max-delay', type=float, default=0.7, help='Max timing stagger in seconds.')
+    # Opt-in flag: hidden/false by default
+    parser.add_argument('-v', '--show-bytes', action='store_true', help='Display raw and swizzled byte tables.')
     args = parser.parse_args()
 
     query_hash = hashlib.sha256(args.query.encode()).hexdigest().upper()
     session_auth = query_hash[:8]
 
-    console.print(f"\n[bold magenta]TEMPORAL BYTE SWIZZLER ORACLE[/bold magenta]")
+    console.print(f"\n[bold magenta]TEMPORAL ORACLE[/bold magenta]")
     console.print(f"[dim]Focus:[/dim] [italic]'{args.query}'[/italic]")
-    console.print(f"[dim]Session Auth:[/dim] [green]{session_auth}[/green]")
-    console.print(f"[dim]Timing Window:[/dim] [cyan]{args.min_delay}s - {args.max_delay}s stagger per byte[/cyan]\n")
+    console.print(f"[dim]Auth:[/dim] [green]{session_auth}[/green]\n")
 
-    table = Table(show_header=True, header_style="bold blue", border_style="dim")
-    table.add_column("#", justify="right", style="dim", width=3)
-    table.add_column("Stagger", justify="right", style="cyan")
-    table.add_column("Raw Byte", justify="center", style="dim")
-    table.add_column("Swizzled Byte", justify="center", style="yellow")
-    table.add_column("Revealed Word", style="bold white")
+    revealed_words = []
+    records = []
+    prev_byte = 0xAA
+    used_indices = set()
 
-    with Live(table, console=console, refresh_per_second=10):
-        prev_byte = 0xAA
-        used_indices = set()
-        
+    # Dynamic status spinner during the staggered entropy acquisition
+    with console.status("[bold cyan]Gathering entropy...") as status:
         for i in range(1, args.num + 1):
             stagger = random.uniform(args.min_delay, args.max_delay)
             time.sleep(stagger)
-            
+
             t_start = time.perf_counter_ns()
             raw_byte = fetch_single_atmospheric_byte()
             t_delta = time.perf_counter_ns() - t_start
-            
+
             final_byte = swizzle_byte(raw_byte, i, t_delta, prev_byte)
             while final_byte in used_indices:
                 final_byte = (final_byte + 1) % 256
-                
+
             used_indices.add(final_byte)
             prev_byte = final_byte
-            
-            table.add_row(
-                str(i),
-                f"{stagger:.2f}s",
-                f"0x{raw_byte:02X}",
-                f"0x{final_byte:02X} ({final_byte})",
-                WORDS[final_byte]
-            )
+            word = WORDS[final_byte]
 
-    console.print(f"\n[dim italic]Pipeline complete. Swizzled across temporal iterations.[/dim italic]\n")
+            revealed_words.append(word)
+            records.append((i, stagger, raw_byte, final_byte, word))
+            status.update(f"[bold cyan]Swizzling byte {i}/{args.num}... [dim]({word})[/dim]")
+
+    # 1. DEFAULT VIEW: Continuous Sentence Output
+    sentence = format_sentence(revealed_words)
+    console.print(Panel(f"[bold white italic]{sentence}[/bold white italic]", title="[bold green]Oracle Response[/bold green]", expand=False))
+
+    # 2. OPTIONAL VIEW: Byte table when --show-bytes / -v is explicitly passed
+    if args.show_bytes:
+        console.print("\n[dim]-- Byte Inspection --[/dim]")
+        table = Table(show_header=True, header_style="bold blue", border_style="dim")
+        table.add_column("#", justify="right", style="dim", width=3)
+        table.add_column("Stagger", justify="right", style="cyan")
+        table.add_column("Raw Byte", justify="center", style="dim")
+        table.add_column("Swizzled Byte", justify="center", style="yellow")
+        table.add_column("Word", style="bold white")
+
+        for idx, stagger, raw_b, swizzled_b, word in records:
+            table.add_row(
+                str(idx),
+                f"{stagger:.2f}s",
+                f"0x{raw_b:02X}",
+                f"0x{swizzled_b:02X} ({swizzled_b})",
+                word
+            )
+        console.print(table)
+
+    console.print()
 
 if __name__ == "__main__":
     try:
