@@ -239,7 +239,8 @@ def main():
 
             revealed_words.append(word)
             records.append((i, stagger, raw_byte, final_byte, word))
-            status.update(f"[bold cyan]Swizzling byte {i}/{args.num}... [dim]({word})[/dim]")
+            #status.update(f"[bold cyan]Swizzling byte {i}/{args.num}... [dim]({word})[/dim]")
+            status.update(f"[bold cyan]Swizzling byte {i}/{args.num}...")
 
     # 1. DEFAULT VIEW: Continuous Sentence Output
     sentence = format_sentence(revealed_words)
