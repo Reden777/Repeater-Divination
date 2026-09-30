@@ -328,12 +328,13 @@ def swizzle_byte(raw_byte: int, step: int, timing_ns: int, prev_byte: int) -> in
 
 LEXICON = {
     "DET": ["The", "A", "Every", "No", "This", "Each", "All"],
-    "ADJ": ["Silent", "Ancient", "Eternal", "Hidden", "Luminous", "Resonant",
-            "Fractured", "Sovereign", "Hollow", "Radiant", "Distant", "Unstable"],
+    #"ADJ": ["Silent", "Ancient", "Eternal", "Hidden", "Luminous", "Resonant",
+    #        "Fractured", "Sovereign", "Hollow", "Radiant", "Distant", "Unstable"],
+    "ADJ": WORDS,
     "NOUN": WORDS,  # Uses your 1,000 words list
     "VERB": ["awakens", "binds", "collides", "decays", "descends", "echoes",
-             "flows", "ignites", "manifests", "pierces", "reflects", "whispers"],
-    "PREP": ["within", "beyond", "beneath", "upon", "across", "toward", "through", "into"],
+             "flows", "ignites", "manifests", "pierces", "reflects", "whispers", "dances", "celebrates"],
+    "PREP": ["within", "beyond", "beneath", "upon", "across", "toward", "through", "into", "above"],
     "CONJ": ["and", "yet", "while", "as", "though"]
 }
 
