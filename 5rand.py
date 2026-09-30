@@ -23,6 +23,7 @@ console = Console()
 
 # === THE VOCABULARY ===
 WORDS = [
+    "I", "you", "this", "us", "they", "he", "she", "him", "her", "me", "mine", "so that", "tell",
     "Abundance", "Abyss", "Action", "Alchemy", "Alpha", "Anchor", "Ancient", "Angel", "Anthem", "Arcane",
     "Arrival", "Aspect", "Astral", "Atlas", "Atmos", "Atom", "Aura", "Aurora", "Autumn", "Avatar",
     "Axis", "Azure", "Balance", "Beacon", "Beast", "Belief", "Birth", "Blade", "Bless", "Bloom",
