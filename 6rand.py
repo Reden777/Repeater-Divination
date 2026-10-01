@@ -23,7 +23,7 @@ console = Console()
 
 # === THE VOCABULARY ===
 WORDS = [
-    "I", "you", "this", "us", "they", "he", "she", "him", "her", "me", "mine", "so that", "tell", "u", "now", "ocean", "earth", "world", "energy", "spirit", "love", "joy", "happy", "anthro", "sea urchin", "Divine", "Heaven", "Universe", "Devotional Universes", "Moksha", "people", "because", "why", "that", "think", "we", "we think", "we say", "say", "the", "a", "every", "write", "writes", "devotion", "happiness", "satisfaction", "satisfied", "yes", "blood", "water", "life", "sea life", "cat", "dog",
+    "I", "you", "this", "us", "they", "he", "she", "him", "her", "me", "mine", "so that", "tell", "u", "now", "ocean", "earth", "world", "energy", "spirit", "love", "joy", "happy", "anthro", "sea urchin", "Divine", "Heaven", "Universe", "Devotional Universes", "Moksha", "people", "because", "why", "that", "think", "we", "we think", "we say", "say", "the", "a", "every", "write", "writes", "devotion", "happiness", "satisfaction", "satisfied", "yes", "blood", "water", "life", "sea life", "cat", "dog", "house", "chair", "phone", "friend", "computer", "magic", "energy", "person", "room", "circle", "sphere", "ball", "day", "sun",
     "Abundance", "Abyss", "Action", "Alchemy", "Alpha", "Anchor", "Ancient", "Angel", "Anthem", "Arcane",
     "Arrival", "Aspect", "Astral", "Atlas", "Atmos", "Atom", "Aura", "Aurora", "Autumn", "Avatar",
     "Axis", "Azure", "Balance", "Beacon", "Beast", "Belief", "Birth", "Blade", "Bless", "Bloom",
