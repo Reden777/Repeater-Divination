@@ -23,7 +23,7 @@ console = Console()
 
 # === THE VOCABULARY ===
 WORDS = [
-    "I", "you", "this", "us", "they", "he", "she", "him", "her", "me", "mine", "so that", "tell", "u", "now", "ocean", "earth", "world", "energy", "spirit", "love", "joy", "happy", "anthro", "sea urchin", "Divine", "Heaven", "Universe", "Devotional Universes", "Moksha", "people", "because", "why", "that", "think", "we", "we think", "we say", "say", "the", "a", "every", "write", "writes", "devotion", "happiness", "satisfaction", "satisfied", "yes", "blood", "water", "life", "sea life",
+    "I", "you", "this", "us", "they", "he", "she", "him", "her", "me", "mine", "so that", "tell", "u", "now", "ocean", "earth", "world", "energy", "spirit", "love", "joy", "happy", "anthro", "sea urchin", "Divine", "Heaven", "Universe", "Devotional Universes", "Moksha", "people", "because", "why", "that", "think", "we", "we think", "we say", "say", "the", "a", "every", "write", "writes", "devotion", "happiness", "satisfaction", "satisfied", "yes", "blood", "water", "life", "sea life", "cat", "dog",
     "Abundance", "Abyss", "Action", "Alchemy", "Alpha", "Anchor", "Ancient", "Angel", "Anthem", "Arcane",
     "Arrival", "Aspect", "Astral", "Atlas", "Atmos", "Atom", "Aura", "Aurora", "Autumn", "Avatar",
     "Axis", "Azure", "Balance", "Beacon", "Beast", "Belief", "Birth", "Blade", "Bless", "Bloom",
@@ -333,7 +333,7 @@ LEXICON = {
     "ADJ": WORDS,
     "NOUN": WORDS,  # Uses your 1,000 words list
     "VERB": ["walks", "runs", "eats", "drinks", "takes", "looks", "awakens", "binds", "collides", "decays", "descends", "echoes",
-             "flows", "ignites", "manifests", "pierces", "reflects", "whispers", "dances", "celebrates", "helps", "gives"],
+             "flows", "ignites", "manifests", "pierces", "reflects", "whispers", "dances", "celebrates", "helps", "gives", "dissolves", "transcends",],
     "PREP": ["within", "beyond", "beneath", "upon", "across", "toward", "through", "into", "above", "in", "on", "at", "to", "for", "with", "from", "by", "about", "over", "near", "before", "after", "between", "inside", "outside"],
     "CONJ": ["and", "yet", "while", "as", "though", "but", "or", "so", "since", "because", "if", "when", "after", "before"]
 }
