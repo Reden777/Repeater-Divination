@@ -23,7 +23,7 @@ console = Console()
 
 # === THE VOCABULARY ===
 WORDS = [
-    "I", "you", "this", "us", "they", "he", "she", "him", "her", "me", "mine", "so that", "tell", "u", "now", "ocean", "earth", "world", "energy", "spirit", "love", "joy", "happy", "anthro", "sea urchin", "Divine", "Heaven", "Universe", "Devotional Universes", "Moksha", "people", "because", "why", "that", "think", "we", "we think", "we say", "say", "the", "a", "every", "write", "writes",
+    "I", "you", "this", "us", "they", "he", "she", "him", "her", "me", "mine", "so that", "tell", "u", "now", "ocean", "earth", "world", "energy", "spirit", "love", "joy", "happy", "anthro", "sea urchin", "Divine", "Heaven", "Universe", "Devotional Universes", "Moksha", "people", "because", "why", "that", "think", "we", "we think", "we say", "say", "the", "a", "every", "write", "writes", "devotion", "happiness", "satisfaction", "satisfied", "yes", "blood", "water", "life", "sea life",
     "Abundance", "Abyss", "Action", "Alchemy", "Alpha", "Anchor", "Ancient", "Angel", "Anthem", "Arcane",
     "Arrival", "Aspect", "Astral", "Atlas", "Atmos", "Atom", "Aura", "Aurora", "Autumn", "Avatar",
     "Axis", "Azure", "Balance", "Beacon", "Beast", "Belief", "Birth", "Blade", "Bless", "Bloom",
@@ -327,7 +327,7 @@ def swizzle_byte(raw_byte: int, step: int, timing_ns: int, prev_byte: int) -> in
 # ==============================================================================
 
 LEXICON = {
-     "DET": ["The", "A", "Every", "No", "This", "Each", "All", "That", "These", "Those", "My", "Your", "His", "Her", "Our", "Their", "Some", "Any", "Every", "Each", "Many", "Few"],
+     "DET": ["The", "A", "Every", "No", "This", "Each", "All", "That", "These", "Those", "My", "Your", "His", "Her", "Our", "Their", "Some", "Any", "Every", "Each", "Many", "Few", "Yes"],
     #"ADJ": ["Silent", "Ancient", "Eternal", "Hidden", "Luminous", "Resonant",
     #        "Fractured", "Sovereign", "Hollow", "Radiant", "Distant", "Unstable"],
     "ADJ": WORDS,
@@ -335,7 +335,7 @@ LEXICON = {
     "VERB": ["walks", "runs", "eats", "drinks", "takes", "looks", "awakens", "binds", "collides", "decays", "descends", "echoes",
              "flows", "ignites", "manifests", "pierces", "reflects", "whispers", "dances", "celebrates", "helps", "gives"],
     "PREP": ["within", "beyond", "beneath", "upon", "across", "toward", "through", "into", "above", "in", "on", "at", "to", "for", "with", "from", "by", "about", "over", "near", "before", "after", "between", "inside", "outside"],
-    "CONJ": ["and", "yet", "while", "as", "though", "but", "or", "so", "since", "because", "if"]
+    "CONJ": ["and", "yet", "while", "as", "though", "but", "or", "so", "since", "because", "if", "when", "after", "before"]
 }
 
 TEMPLATES = [
