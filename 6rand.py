@@ -327,15 +327,15 @@ def swizzle_byte(raw_byte: int, step: int, timing_ns: int, prev_byte: int) -> in
 # ==============================================================================
 
 LEXICON = {
-    "DET": ["The", "A", "Every", "No", "This", "Each", "All"],
+     "DET": ["The", "A", "Every", "No", "This", "Each", "All", "That", "These", "Those", "My", "Your", "His", "Her", "Our", "Their", "Some", "Any", "Every", "Each", "Many", "Few"],
     #"ADJ": ["Silent", "Ancient", "Eternal", "Hidden", "Luminous", "Resonant",
     #        "Fractured", "Sovereign", "Hollow", "Radiant", "Distant", "Unstable"],
     "ADJ": WORDS,
     "NOUN": WORDS,  # Uses your 1,000 words list
-    "VERB": ["awakens", "binds", "collides", "decays", "descends", "echoes",
-             "flows", "ignites", "manifests", "pierces", "reflects", "whispers", "dances", "celebrates"],
-    "PREP": ["within", "beyond", "beneath", "upon", "across", "toward", "through", "into", "above"],
-    "CONJ": ["and", "yet", "while", "as", "though"]
+    "VERB": ["walks", "runs", "eats", "drinks", "takes", "looks", "awakens", "binds", "collides", "decays", "descends", "echoes",
+             "flows", "ignites", "manifests", "pierces", "reflects", "whispers", "dances", "celebrates", "helps", "gives"],
+    "PREP": ["within", "beyond", "beneath", "upon", "across", "toward", "through", "into", "above", "in", "on", "at", "to", "for", "with", "from", "by", "about", "over", "near", "before", "after", "between", "inside", "outside"],
+    "CONJ": ["and", "yet", "while", "as", "though", "but", "or", "so", "since", "because", "if"]
 }
 
 TEMPLATES = [
