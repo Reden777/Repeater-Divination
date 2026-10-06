@@ -346,7 +346,8 @@ TEMPLATES = [
 
 def format_sentence(entropy_bytes: List[int]) -> str:
     """
-    Consumes entropy bytes sequentially to select a template and populate its slots.
+    Consumes entropy bytes and derives position-salted entropy 
+    so slots never repeat words.
     """
     #if not entropy_bytes:
     #    return "The void remains silent."
@@ -355,12 +356,29 @@ def format_sentence(entropy_bytes: List[int]) -> str:
     template_idx = entropy_bytes[0] % len(TEMPLATES)
     template = TEMPLATES[template_idx]
 
-    # 2. Populate each grammatical slot using the subsequent entropy bytes
+    # Combine all harvested bytes into an entropy pool
+    entropy_seed = bytes(entropy_bytes)
+
     words = []
+    used_words = set()
+
     for i, part_of_speech in enumerate(template):
-        byte = entropy_bytes[(i + 1) % len(entropy_bytes)]
         vocab_pool = LEXICON[part_of_speech]
-        chosen_word = vocab_pool[byte % len(vocab_pool)]
+
+        # Salt the entropy with slot index 'i' so position 2 and position 5 
+        # never evaluate to the same byte
+        slot_hash = hashlib.sha256(entropy_seed + i.to_bytes(2, 'little')).digest()
+        slot_val = int.from_bytes(slot_hash[:4], 'little')
+
+        # Pick word avoiding immediate duplicates
+        idx = slot_val % len(vocab_pool)
+        attempts = 0
+        while vocab_pool[idx].lower() in used_words and attempts < len(vocab_pool):
+            idx = (idx + 1) % len(vocab_pool)
+            attempts += 1
+
+        chosen_word = vocab_pool[idx]
+        used_words.add(chosen_word.lower())
         words.append(chosen_word)
 
     sentence = " ".join(words)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-TAROT2.py
+TAROT3.py
 Automatic, non-deterministic Tarot readings based on cryptographic hashing.
 Casts 3 consecutive independent decks per reading.
 """
@@ -190,7 +190,7 @@ def main():
     # --- Cast 3 consecutive decks ---
     for deck_num in range(1, TOTAL_DECKS + 1):
         # 1. Regenerate time & seed for this deck's unique run
-        timestamp = datetime.now(timezone.utc).isoformat(timespec='seconds')
+        timestamp = datetime.now().astimezone().isoformat(timespec='seconds')
         seed_material = f"{args.query}|{timestamp}|deck-{deck_num}".encode('utf-8')
         seed = hashlib.sha256(seed_material).digest()
 
