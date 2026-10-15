@@ -108,6 +108,7 @@ def get_random_bytes(num_bytes: int = 32) -> bytes:
     try:
         return fetch_random_org_bytes(num_bytes)
     except Exception:
+        print(f"[Warning] Falling back to OS entropy... {e}", file=sys.stderr)
         return os.urandom(num_bytes)
 
 # ----- Hashing Engine -----
