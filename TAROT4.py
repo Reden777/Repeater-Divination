@@ -13,7 +13,6 @@ import sys
 import os
 import argparse
 import urllib.request
-import urllib.error
 from datetime import datetime, timezone
 
 # ----- Optional color UI via rich -----
@@ -80,7 +79,7 @@ def fetch_random_org_bytes(num_bytes: int = 32) -> bytes:
     )
     req = urllib.request.Request(
         url,
-        headers={"User-Agent": "TAROT3/1.0"}
+        headers={"User-Agent": "TAROT/4.0"}
     )
     with urllib.request.urlopen(req, timeout=5) as response:
         status_code = getattr(response, "status", None)
@@ -240,7 +239,8 @@ def main():
     for deck_num in range(1, TOTAL_DECKS + 1):
         # 1. Regenerate time & seed for this deck's unique run
         timestamp = datetime.now().astimezone().isoformat(timespec='seconds')
-        seed = get_random_bytes(32)
+        random_entropy = get_random_bytes(32)
+        seed = hashlib.sha256(random_entropy + f"{args.query}|{deck_num}".encode('utf-8')).digest()
 
         # 2. Derive unique authentication hash for this cast
         auth_hash = ProtectiveHasher.derive_protected_bytes(seed, b"tarot-auth")
