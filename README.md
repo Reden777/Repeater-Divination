@@ -3,7 +3,9 @@ The Intention Repeater Tarot by Thomas Sweet/AnthroHeart (https://intentionrepea
 
 # DivinationAdvancedTool3.html is the ultimate version. 3stars.py just for Astrology.
 
-October 15 2026: Added galgal.py and 2galgal.py. galgal.py has 3 wheels and 2galgal.py has 4 wheels that rotate in 360 degrees to assign kabbalah plus tarot meanings. 2galgal said about itself that it was saturated, and (slightly) too heavy, while galgal.py praised itself as the "golden mean" with Temperance. Both said TAROT3.py wasn't as good as them, though perhaps this is because both galgals were updated to use random.org.
+October 15 2026: Added galgal.py and 2galgal.py. galgal.py has 3 wheels and 2galgal.py has 4 wheels that rotate in 360 degrees to assign kabbalah plus tarot meanings. 2galgal said about itself that it was saturated, and (slightly) too heavy, while galgal.py praised itself as the "golden mean" with Temperance. Both said TAROT3.py wasn't as good as them, though perhaps this is because both galgals were updated to use random.org. Edit: Upgrading tarot3.py with random.org into tarot4.py was recommended.
+
+Unlike previous series, 2galgal.py and galgal.py are not newer/older (one replaces the other), but 2 useful versions that can be used in conjunction.
 
 August 5 2026: Added scatter mode (all 24 runes with 50% chance to ignore each), a traditional style of casting.<br>
 "When traditional practitioners used the scatter method, they often read the runes contextually based on where they landed on the cloth (e.g., runes touching each other modified each other's meanings, runes near the center were more important than runes on the edges)."
