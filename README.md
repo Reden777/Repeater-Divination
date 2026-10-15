@@ -7,6 +7,8 @@ October 15 2026: Added galgal.py and 2galgal.py. galgal.py has 3 wheels and 2gal
 
 Unlike previous series, 2galgal.py and galgal.py are not newer/older (one replaces the other), but 2 useful versions that can be used in conjunction.
 
+Also added 8rand.py, which generates hebrew letters plus cantillation, musical, and other typographical marks, which greatly enrich the reading.
+
 August 5 2026: Added scatter mode (all 24 runes with 50% chance to ignore each), a traditional style of casting.<br>
 "When traditional practitioners used the scatter method, they often read the runes contextually based on where they landed on the cloth (e.g., runes touching each other modified each other's meanings, runes near the center were more important than runes on the edges)."
 
