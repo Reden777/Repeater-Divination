@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-TAROT3.py
+TAROT4.py
 Automatic, non-deterministic Tarot readings based on cryptographic hashing.
 Casts 3 consecutive independent decks per reading.
 """
