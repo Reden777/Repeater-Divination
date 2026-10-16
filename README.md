@@ -55,9 +55,9 @@ Likewise for RUNES.py.
 
 Symmetrical runes (that look the same any side) such as Gebo do not traditionally have a reversed form. Despite this, recent tool versions do include their reversed forms.
 
-The Tarot file once was GPL3, and since all the other files were derived from it, they were too. However, as of December 2025, AnthroHeart/Cio has moved to CC0 for everything he makes, so I have too.
+The Tarot file once was GPL3, and since all the other files were derived from it, they were too. However, as of December 2025, AnthroHeart/Cio has moved to CC0 for everything he makes, so I have too. Update as of October 15 2026: Relicensed to 0BSD to make it clearer. Some organizations don't like CC0, but everyone accepts 0BSD.
 
-Geomancy's 15 "drawables" felt too slanted to negativity, and I-CHING3.py recommended me to delete it, so I did.
+Geomancy's 15 "drawables" felt too slanted to negativity, and I-CHING3.py recommended me to delete it, so I did. Update 2026: If anyone needs geomancy, golden.py (Golden Dawn divinatory program) has a modified version that's more or less functional.
 
 (Not an exhaustive list): With the "Be positive and kind" system prompt, ratings of AI models employing the astrology series' divinatory programs (hopefully, all models will engage well with it and specially with a normal Swiss Ephemerides one)<br>% next to the model name means I forgot to insert the system prompt:
 
@@ -77,6 +77,7 @@ No therapyspeak allowed." system prompt (only one newline if you're reading this
 1. Grok 4.20: Kinda good
 2. Grok 4.5: A bit worse, sounds like older Groks (all jumping through different topics)
 3. Gemini Pro 3.1: Overall, it's okay, but if garbage fake-safety words begin leaking in, you must edit. Do not allow them to pollute the reading.
+4. Gemini 3.8 Flash: Overall good
 
 With the default OpenRouter system prompt ("You are model_name from model_creator, today°s date is date, markdown, formatting, latex tags rules"), ratings of AI models employing the Tarot divinatory programs:
 1. Gemma 4 31B (CoreWeave, Max reasoning): Excellent. Thanks to the false safety filter not being present, it is incredibly empathetic in a real way. Used with 3stars.py.
