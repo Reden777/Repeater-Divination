@@ -377,7 +377,7 @@ class GalgalEngine:
             is_reversed = False
             if self.reversals_enabled:
                 reversal_salt = f"galgal-reversal-{i}"
-                is_reversed = (hash_for_int(self.seed, reversal_salt) % 2) == 1
+                is_reversed = (hash_for_int(self.seed, reversal_salt) % 100) < 8
 
             node_degree = (wheel_shift_deg + int((i / num_draws) * 360)) % 360
 
