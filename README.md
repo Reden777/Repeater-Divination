@@ -78,7 +78,7 @@ No therapyspeak allowed." system prompt (only one newline if you're reading this
 2. Grok 4.5: A bit worse, sounds like older Groks (all jumping through different topics)
 3. Gemini Pro 3.1: Overall, it's okay, but if garbage fake-safety words begin leaking in, you must edit. Do not allow them to pollute the reading.
 4. Gemini 3.8 Flash: Overall good
-5. Minimax M3.1 Flash (in openrouter): Bad. Assumed things that weren't there.
+5. Minimax M3.1 Flash (in openrouter): Bad. Assumed things that weren't there. Too literalistic reading of the cards, like gemini 2.5 flash in that sense but worse.
 6. Gemma 4 31B: From 2 readings so far, correlating to its good rank further down.
 
 With the default OpenRouter system prompt ("You are model_name from model_creator, today°s date is date, markdown, formatting, latex tags rules"), ratings of AI models employing the Tarot divinatory programs:
