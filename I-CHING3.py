@@ -971,7 +971,7 @@ HEXAGRAM_DATABASE: Dict[Tuple[str, str], Dict[str, Any]] = {
             "Cockcrow penetrating to heaven. Perseverance brings misfortune."
         ]
     },
-    ("☶", "☳"): {
+    ("☳", "☶"): {
         "number": 62,
         "name": "Xiao Guo / Preponderance of the Small",
         "chinese": "小過",
