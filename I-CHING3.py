@@ -1142,7 +1142,7 @@ class IChing:
         Uses cryptographic hashing to ensure deterministic, secure results.
         """
         # Generate timestamp and create seed
-        timestamp = datetime.now(timezone.utc).isoformat(timespec='seconds')
+        timestamp = datetime.now().astimezone().isoformat(timespec='seconds')
         seed_material = f"{query}|{timestamp}".encode('utf-8')
         seed = hashlib.sha256(seed_material).digest()
         
