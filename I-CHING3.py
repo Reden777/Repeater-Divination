@@ -56,6 +56,9 @@ class LineValue(IntEnum):
 # King Wen sequence with full metadata
 HEXAGRAM_DATABASE: Dict[Tuple[str, str], Dict[str, Any]] = {
     # Format: (lower_trigram, upper_trigram): {metadata}
+    ## The entries are actually arranged as (upper_trigram, lower_trigram)
+    ## While the get_hexagram_info function claims to accept lower first, cast() passes upper first. Fallback descriptions (which there should't be any of anyway) have upper and lower reversed when calling from cast()
+    ## These inconsistencies currently balance each other out and so aren't an issue.
     ("☰", "☰"): {
         "number": 1,
         "name": "Qian / The Creative",
