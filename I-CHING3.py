@@ -78,7 +78,7 @@ HEXAGRAM_DATABASE: Dict[Tuple[str, str], Dict[str, Any]] = {
         "number": 2,
         "name": "Kun / The Receptive",
         "chinese": "坤",
-        "judgement": "The Receptive brings about sublime success, furthering through the perseverance of a mare.",
+        "judgement": "The Receptive brings about sublime success, furthering through the perseverance of a mare. If the superior man undertakes something and tries to lead, he goes astray; but if he follows, he finds guidance. It is favorable to find friends in the west and south, to forego friends in the east and north. Quiet perseverance brings good fortune.",
         "image": "Earth above Earth: The earth's condition is receptive devotion. Thus the superior man who has breadth of character carries the outer world.",
         "lines": [
             "When there is hoarfrost underfoot, solid ice is not far off.",
