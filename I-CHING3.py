@@ -488,7 +488,7 @@ HEXAGRAM_DATABASE: Dict[Tuple[str, str], Dict[str, Any]] = {
         "lines": [
             "Repetition of the Abysmal. In the abyss one falls into a pit. Misfortune.",
             "The abyss is dangerous. One should strive to attain small things only.",
-            "Forward and backward, abyss on abyss. In danger like this, pause at first and wait, otherwise you will fall into a pit in the abyss. Do not act.",
+            "Forward and backward, abyss on abyss. In danger like this, pause at first and wait, otherwise you will fall into a pit in the abyss. Do not act in this way.",
             "A jug of wine, a bowl of rice with it; earthen vessels simply handed in through the window. There is certainly no blame in this.",
             "The abyss is not filled to overflowing, it is filled only to the rim. No blame.",
             "Bound with cords and ropes, shut in between thorn-hedged prison walls: for three years one does not find the way. Misfortune."
